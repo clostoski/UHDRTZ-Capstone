@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nvidia/Downloads/sdl2/HDRTZ/Backend/GameWindow.cpp
+jsoncpp/json/json.h
+-
+fstream
+-
+GameWindow.h
+/home/nvidia/Downloads/sdl2/HDRTZ/Backend/GameWindow.h
+SDL.h
+-
+stdio.h
+-
+cstdlib
+-
+iostream
+-
+ctime
+-
+string
+-
+
+/home/nvidia/Downloads/sdl2/HDRTZ/Backend/GameWindow.h
+SDL.h
+-
+

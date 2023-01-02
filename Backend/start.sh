@@ -1,0 +1,1 @@
+DBUS_FATAL_WARNINGS=0 ./a.out

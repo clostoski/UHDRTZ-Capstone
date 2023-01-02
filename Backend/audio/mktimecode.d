@@ -1,0 +1,1 @@
+mktimecode.o: mktimecode.c

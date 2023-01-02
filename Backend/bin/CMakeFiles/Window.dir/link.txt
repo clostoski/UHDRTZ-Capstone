@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/Window.dir/GameWindow.cpp.o  -o Window 
