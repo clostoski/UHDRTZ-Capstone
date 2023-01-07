@@ -53,10 +53,9 @@ void setTermPorts() {
     cfmakeraw(&tty);
 }
 
-void initSDL() {
+void initSDL(SDL_Renderer *renderer) {
     SDL_Window *window = NULL;
     SDL_Surface *screenSurface = NULL;
-    SDL_Renderer *renderer = NULL;
 
     //initialize SDL Things
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -79,16 +78,11 @@ void initSDL() {
     int imgFlags = IMG_INIT_PNG;
     if (!(IMG_Init(imgFlags) & imgFlags))
         printf("SDL Image not initialized");
-    SDL_Surface *maskSurf = IMG_Load("test.png");
-    SDL_Texture *maskTex = SDL_CreateTextureFromSurface(renderer, maskSurf);
-    SDL_Surface *xSurf = IMG_Load("xhair.png");
-    SDL_Texture *xTex = SDL_CreateTextureFromSurface(renderer, xSurf);
 }
 
-void openCam() {
+void openCam(VideoCapture cap) {
     //Initialize openCV camera and set up image capture
-    VideoCapture cap;
-    for (int i = 1; i <= 5: i++) {
+    for (int i = 1; i <= 5; i++) {
         cap.open(i);
         cap.set(CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH);
         cap.set(CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT);
@@ -98,7 +92,7 @@ void openCam() {
         {
             cout << "error opening stream" << endl;
             i++;
-            return -1;
+            exit;
         }
     } 
 }
@@ -143,10 +137,16 @@ int main(int argc, char *args[])
 {
   
     setTermPorts();
-    
-    initSDL();
 
-    openCam();
+    SDL_Renderer *renderer = NULL;
+    initSDL(renderer);
+    SDL_Surface *maskSurf = IMG_Load("test.png");
+    SDL_Texture *maskTex = SDL_CreateTextureFromSurface(renderer, maskSurf);
+    SDL_Surface *xSurf = IMG_Load("xhair.png");
+    SDL_Texture *xTex = SDL_CreateTextureFromSurface(renderer, xSurf);
+
+    VideoCapture cap;
+    openCam(cap);
     
     /* Reading from json and running program */
     float MAX_INTERVAL = 15;
